@@ -9,7 +9,7 @@
             app:showAsAction="always"/>
 
     <item
-            android:id="toolbar_categories"
+            android:id="@+id/toolbar_categories"
             android:title="@string/categories"
             android:icon="@drawable/ic_more_vert_white_24dp"/>
 

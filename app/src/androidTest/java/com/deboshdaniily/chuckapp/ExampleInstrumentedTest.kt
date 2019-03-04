@@ -1,7 +1,7 @@
 package com.deboshdaniily.chuckapp
 
-import android.support.test.runner.AndroidJUnit4
 import android.util.Log
+import androidx.test.runner.AndroidJUnit4
 import com.deboshdaniily.chuckapp.data.JokeModel
 import org.junit.Test
 import org.junit.runner.RunWith
