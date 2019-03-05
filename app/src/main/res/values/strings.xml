@@ -5,4 +5,9 @@
     <string name="joke_id">ID</string>
     <string name="joke_text">Joke</string>
     <string name="joke_category">Category</string>
+    <string name="btn_cancel">CANCEL</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_add_new">ADD NEW</string>
+    <string name="explicit_category">Explicit</string>
+    <string name="nerdy_category">Nerdy</string>
 </resources>
