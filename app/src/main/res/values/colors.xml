@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#905915</color>
     <color name="colorAccent">#EBEBEB</color>
     <color name="fabColor">#D86D1B</color>
+    <color name="btnCancel">#AB4B04</color>
+    <color name="btnOk">#CD5F11</color>
+    <color name="btnAddNew">#CD8B11</color>
+    <color name="background">#DDD8D8</color>
 </resources>
