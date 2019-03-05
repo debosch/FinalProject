@@ -9,7 +9,7 @@
     </style>
 
     <style name="FloatingActionButtonBackground" parent="Theme.MaterialComponents.Light">
-        <item name="colorAccent">@color/FabColor</item>
+        <item name="colorAccent">@color/fabColor</item>
     </style>
 
 
