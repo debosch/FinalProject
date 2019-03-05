@@ -2,6 +2,6 @@
 <resources>
     <color name="colorPrimary">#E2721F</color>
     <color name="colorPrimaryDark">#905915</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="FabColor">#D86D1B</color>
+    <color name="colorAccent">#EBEBEB</color>
+    <color name="fabColor">#D86D1B</color>
 </resources>

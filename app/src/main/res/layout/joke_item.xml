@@ -1,8 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-    
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <TextView
+                android:id="@+id/joke_id"
+                android:textSize="12sp"
+                android:text="@string/joke_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginEnd="398dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/view" app:layout_constraintTop_toTopOf="parent"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:background="@android:color/darker_gray"
+                android:layout_height="1dp"
+                android:id="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/joke_id"
+                app:layout_constraintBottom_toTopOf="@+id/joke_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+                android:id="@+id/joke_text"
+                android:textStyle="bold"
+                android:text="@string/joke_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/joke_id"
+                android:layout_marginEnd="381dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/joke_category"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/joke_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/view2"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/joke_category"/>
+
+        <TextView
+                android:id="@+id/joke_category"
+                android:textSize="12sp"
+                android:text="@string/joke_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="354dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageButton
+                android:id="@+id/joke_share_button"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_share_black_20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/joke_edit_button" app:layout_constraintEnd_toEndOf="parent"
+        />
+
+        <ImageButton
+                android:id="@+id/joke_edit_button"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_edit_black_20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/joke_share_button"
+                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.48"
+                android:layout_marginStart="320dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>
