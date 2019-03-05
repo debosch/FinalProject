@@ -12,6 +12,7 @@
 
         <TextView
                 android:id="@+id/joke_id"
+                android:textSize="12sp"
                 android:text="@string/joke_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
 
         <TextView
                 android:id="@+id/joke_text"
+                android:textStyle="bold"
                 android:text="@string/joke_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,6 +57,7 @@
 
         <TextView
                 android:id="@+id/joke_category"
+                android:textSize="12sp"
                 android:text="@string/joke_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,6 +80,7 @@
 
         <ImageButton
                 android:id="@+id/joke_edit_button"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_edit_black_20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
