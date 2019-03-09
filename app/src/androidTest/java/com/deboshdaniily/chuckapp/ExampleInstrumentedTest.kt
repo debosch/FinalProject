@@ -2,13 +2,9 @@ package com.deboshdaniily.chuckapp
 
 import android.util.Log
 import androidx.test.runner.AndroidJUnit4
-import com.deboshdaniily.chuckapp.data.JokeModel
+import com.deboshdaniily.chuckapp.data.DataServiceImpl
 import org.junit.Test
 import org.junit.runner.RunWith
-import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -18,21 +14,38 @@ import retrofit2.http.GET
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.chucknorris.io/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    private val service = DataServiceImpl()
+    private val category = "dev"
+    private val query = "chuck norris"
 
-    interface ApiService {
-        @GET("jokes/random")
-        fun getRandomJoke(): Call<JokeModel>
+    @Test
+    fun showCategories() {
+
+        service.getCategories { Log.e("Test", it.toString()) }
+        Thread.sleep(6000)
     }
 
     @Test
     fun showRandomJoke() {
-        val service = retrofit.create(ApiService::class.java)
-        val exec = service.getRandomJoke().execute()
-        Log.e("Test", "Body: ${exec.body()}")
-        Log.e("Test", "ErrorBody: ${exec.errorBody()?.string()}")
+
+        service.getRandomJoke { Log.e("Test", it.toString()) }
+        Thread.sleep(6000)
     }
+
+    @Test
+    fun showRandomJokeFromCategory() {
+
+        service.getRandomJokeFromCategory(category){ Log.e("Test", it.toString()) }
+        Thread.sleep(6000)
+    }
+
+    @Test
+    fun showJokesWithQuery() {
+
+        service.getJokesWithQuery(query){ Log.e("Test", it.toString()) }
+        Thread.sleep(6000)
+    }
+
+
+
 }
