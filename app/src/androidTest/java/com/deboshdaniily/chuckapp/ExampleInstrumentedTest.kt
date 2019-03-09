@@ -2,7 +2,7 @@ package com.deboshdaniily.chuckapp
 
 import android.util.Log
 import androidx.test.runner.AndroidJUnit4
-import com.deboshdaniily.chuckapp.data.DataServiceImpl
+import com.deboshdaniily.chuckapp.data.RetrofitDataServiceImpl
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
 
-    private val service = DataServiceImpl()
+    private val service = RetrofitDataServiceImpl()
     private val category = "dev"
     private val query = "chuck norris"
 

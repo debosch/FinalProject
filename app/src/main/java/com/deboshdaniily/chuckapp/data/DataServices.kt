@@ -19,7 +19,7 @@ interface DataService {
 
 }
 
-class DataServiceImpl : DataService{
+class RetrofitDataServiceImpl : DataService{
 
     private val jokeApiRetrofit = Retrofit.Builder()
         .baseUrl("https://api.chucknorris.io/")
