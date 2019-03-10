@@ -11,4 +11,7 @@
     <string name="explicit_category">Explicit</string>
     <string name="nerdy_category">Nerdy</string>
     <string name="author">Author:</string>
+    <string name="edit_joke_text">Write your joke</string>
+    <string name="saved_menu_item">Saved</string>
+    <string name="name_of_new_category">Write category here</string>
 </resources>
