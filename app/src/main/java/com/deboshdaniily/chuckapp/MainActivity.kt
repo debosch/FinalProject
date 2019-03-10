@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.deboshdaniily.chuckapp.categories.Category
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        fab.setOnClickListener {
+            val intent = Intent(this, NewJoke::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -29,4 +34,5 @@ class MainActivity : AppCompatActivity() {
 
         return super.onCreateOptionsMenu(menu)
     }
+
 }
