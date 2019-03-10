@@ -9,41 +9,40 @@
 
 
     <ScrollView
-        android:id="@+id/categories_holder"
+        android:id="@+id/scroll_view"
         android:layout_width="380dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add_new"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/cetegories_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="10dp">
 
-            <CheckBox
+            <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp"
                 android:buttonTint="@android:color/black"
                 android:text="@string/explicit_category"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 
-            <CheckBox
+            <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp"
                 android:buttonTint="@android:color/black"
                 android:text="@string/nerdy_category"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 
-        </LinearLayout>
+        </RadioGroup>
 
     </ScrollView>
 
@@ -51,8 +50,9 @@
     <Button
         android:id="@+id/btn_cancel"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="6dp"
         android:layout_weight="1"
         android:background="@color/btnCancel"
@@ -61,14 +61,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_ok"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_new" />
+        app:layout_constraintTop_toBottomOf="@+id/scroll_view" />
 
 
     <Button
         android:id="@+id/btn_ok"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_marginStart="6dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="15dp"
         android:layout_weight="1"
         android:background="@color/btnOk"
@@ -77,24 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_cancel"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_new" />
+        app:layout_constraintTop_toBottomOf="@+id/scroll_view" />
 
-
-    <Button
-        android:id="@+id/btn_add_new"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/btnAddNew"
-        android:text="@string/btn_add_new"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84000003" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
