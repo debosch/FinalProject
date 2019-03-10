@@ -13,4 +13,8 @@
         android:id="@+id/categories_menu_item"
         android:title="@string/categories" />
 
+    <item
+        android:id="@+id/saved_menu_item"
+        android:title="@string/saved_menu_item" />
+
 </menu>

@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.deboshdaniily.chuckapp.categories.Category
+import com.deboshdaniily.chuckapp.jokes.NewJoke
 import kotlinx.android.synthetic.main.activity_main.*
 
 
