@@ -5,20 +5,21 @@ import com.google.gson.annotations.SerializedName
 typealias Category = String
 
 data class JokeModel(
-    @SerializedName("icon_url")
-    val iconUrl: String? = null,
 
     @SerializedName("id")
-    val jokeId: String,
-
-    @SerializedName("url")
-    val jokeUrl: String,
+    val jokeId: String? = null,
 
     @SerializedName("value")
     val joke: String,
 
+    @SerializedName("icon_url")
+    val iconUrl: String? = null,
+
+    @SerializedName("url")
+    val jokeUrl: String? = null,
+
     @SerializedName("category")
-    val categories: MutableList<Category>? = null
+    val categories: List<Category>? = null
 )
 
 data class QueryResult(
