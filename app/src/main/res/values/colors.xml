@@ -8,4 +8,5 @@
     <color name="btnOk">#D86C1D</color>
     <color name="btnAddNew">#CD8B11</color>
     <color name="background">#EBE6E0</color>
+    <color name="divider">#B9B8B7</color>
 </resources>

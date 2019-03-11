@@ -28,8 +28,9 @@ interface DataService {
     fun cacheJoke(model: JokeModel, callback: (Try<Void>) -> Unit = {})
 }
 
-class DataServiceImpl(context: Context) : DataService {
 
+
+class DataServiceImpl(context: Context) : DataService {
     private val jokeApiRetrofit = Retrofit.Builder()
         .baseUrl("https://api.chucknorris.io/")
         .addConverterFactory(GsonConverterFactory.create())
