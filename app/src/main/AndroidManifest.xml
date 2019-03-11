@@ -15,8 +15,10 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".categories.CategoryName"
-            android:theme="@style/CategoryNameTheme" />
-        <activity android:name=".categories.NewCategory" />
+            android:theme="@style/CategoryTheme" />
+        <activity
+            android:name=".categories.NewCategory"
+            android:theme="@style/CategoryTheme" />
         <activity
             android:name=".jokes.NewJoke"
             android:parentActivityName=".MainActivity" />

@@ -19,7 +19,7 @@ interface DataService {
 
 }
 
-class RetrofitDataServiceImpl : DataService{
+class RetrofitDataServiceImpl : DataService {
 
     private val jokeApiRetrofit = Retrofit.Builder()
         .baseUrl("https://api.chucknorris.io/")
@@ -30,7 +30,7 @@ class RetrofitDataServiceImpl : DataService{
 
         jokeApiRetrofit.getRandomJoke().enqueue(
 
-            object: Callback<JokeModel> {
+            object : Callback<JokeModel> {
 
                 override fun onFailure(call: Call<JokeModel>, t: Throwable) {
                     callback.invoke(Try.failure(t))
@@ -45,7 +45,7 @@ class RetrofitDataServiceImpl : DataService{
 
     override fun getRandomJokeFromCategory(category: String, callback: (Try<JokeModel>) -> Unit) {
         jokeApiRetrofit.getRandomJokeFromCategory(category).enqueue(
-            object: Callback<JokeModel> {
+            object : Callback<JokeModel> {
 
                 override fun onFailure(call: Call<JokeModel>, t: Throwable) {
                     callback.invoke(Try.failure(t))
@@ -60,7 +60,7 @@ class RetrofitDataServiceImpl : DataService{
 
     override fun getJokesWithQuery(searchQuery: String, callback: (Try<QueryResult>) -> Unit) {
         jokeApiRetrofit.getJokesWithQuery(searchQuery).enqueue(
-            object: Callback<QueryResult> {
+            object : Callback<QueryResult> {
 
                 override fun onFailure(call: Call<QueryResult>, t: Throwable) {
                     callback.invoke(Try.failure(t))
@@ -75,7 +75,7 @@ class RetrofitDataServiceImpl : DataService{
 
     override fun getCategories(callback: (Try<List<Category>>) -> Unit) {
         jokeApiRetrofit.getCategories().enqueue(
-            object: Callback<List<Category>> {
+            object : Callback<List<Category>> {
 
                 override fun onFailure(call: Call<List<Category>>, t: Throwable) {
                     callback.invoke(Try.failure(t))

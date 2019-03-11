@@ -11,7 +11,7 @@ class NewCategory : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_category)
-        title = "New category"
+
         btn_cancel_new.setOnClickListener { finish() }
 
         btn_add_new.setOnClickListener {
