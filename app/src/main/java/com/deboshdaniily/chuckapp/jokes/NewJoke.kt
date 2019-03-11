@@ -12,7 +12,7 @@ class NewJoke : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_joke)
-        title = "Write new joke"
+        title = resources.getString(R.string.title_new_joke)
         btn_cancel.setOnClickListener { finish() }
 
         edit_category.setOnClickListener {
