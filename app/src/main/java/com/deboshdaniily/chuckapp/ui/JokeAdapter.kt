@@ -16,6 +16,8 @@ class JokeAdapter(
     private val supplier: (position: Int, callback: (Try<JokeModel>) -> Unit) -> Unit
 ) : RecyclerView.Adapter<JokeAdapter.JokeViewHolder>() {
 
+    private val downloadedJokes: MutableList<JokeModel> = ArrayList()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JokeViewHolder {
         return JokeViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.joke_item, parent, false)
@@ -26,29 +28,47 @@ class JokeAdapter(
 
     override fun onBindViewHolder(holder: JokeViewHolder, position: Int) {
 
-        Log.e("JokeAdapter", "onBind")
-        supplier.invoke(position) {
-            Log.e("JokeAdapter", "supplier.invoke, it = $it")
-            holder.itemView.apply {
-                if (it.isSuccess) {
-                    val model = it.get()
-                    joke_text.text = model.joke
-                    joke_category.text = "Category: " + (model.categories?.joinToString(", ") ?: "none")
-                    joke_share_button.setOnClickListener {
-                        val shareIntent = Intent()
-                        shareIntent.action = Intent.ACTION_SEND
-                        shareIntent.type = "text/plain"
-                        shareIntent.putExtra(
-                            Intent.EXTRA_TEXT,
-                            model.joke + resources.getString(R.string.share_text)
-                        )
-                        context.startActivity(shareIntent)
+        if (downloadedJokes.size <= position) {
+            supplier.invoke(position) {
+                Log.e("JokeAdapter", "supplier.invoke, it = $it")
+                holder.itemView.apply {
+                    if (it.isSuccess) {
+                        val model = it.get()
+                        joke_text.text = model.joke
+                        joke_category.text = "Category: " + (model.categories?.joinToString(", ") ?: "none")
+                        downloadedJokes.add(model)
+                        joke_share_button.setOnClickListener {
+                            val shareIntent = Intent()
+                            shareIntent.action = Intent.ACTION_SEND
+                            shareIntent.type = "text/plain"
+                            shareIntent.putExtra(
+                                Intent.EXTRA_TEXT,
+                                model.joke + resources.getString(R.string.share_text)
+                            )
+                            context.startActivity(shareIntent)
+                        }
+                    } else {
+                        joke_text.text = "Error downloading joke: ${it.cause}"
+                        joke_category.text = "???"
                     }
-                } else {
-                    joke_text.text = "Error downloading joke: ${it.cause}"
-                    joke_category.text = "???"
                 }
-
+            }
+        } else {
+            val model = downloadedJokes[position]
+            holder.itemView.apply {
+                joke_text.text = model.joke
+                joke_category.text = "Category: " + (model.categories?.joinToString(", ") ?: "none")
+                downloadedJokes.add(model)
+                joke_share_button.setOnClickListener {
+                    val shareIntent = Intent()
+                    shareIntent.action = Intent.ACTION_SEND
+                    shareIntent.type = "text/plain"
+                    shareIntent.putExtra(
+                        Intent.EXTRA_TEXT,
+                        model.joke + resources.getString(R.string.share_text)
+                    )
+                    context.startActivity(shareIntent)
+                }
             }
         }
     }
