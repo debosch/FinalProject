@@ -10,7 +10,7 @@ import com.deboshdaniily.chuckapp.categories.Category
 import com.deboshdaniily.chuckapp.data.DataService
 import com.deboshdaniily.chuckapp.data.DataServiceImpl
 import com.deboshdaniily.chuckapp.jokes.NewJoke
-import com.deboshdaniily.chuckapp.ui.JokeAdapder
+import com.deboshdaniily.chuckapp.ui.JokeAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val JOKES_LIMIT = 50
@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun postInit() {
         service = DataServiceImpl(this.applicationContext)
+
+        joke_list.adapter = JokeAdapter(JOKES_LIMIT) { _, callback ->
+            service.getRandomJoke(callback::invoke)
+        }
+        joke_list.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,11 +37,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, NewJoke::class.java)
             startActivity(intent)
         }
-
-        joke_list.adapter = JokeAdapder(JOKES_LIMIT) { _, callback ->
-            service.getRandomJoke(callback::invoke)
-        }
-        joke_list.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 if (it.isSuccess) {
                     val count = it.get()
                     runOnUiThread {
-                        joke_list.adapter = JokeAdapder(count) { position, callback ->
+                        joke_list.adapter = JokeAdapter(count) { position, callback ->
                             service.getCachedJokeById(position + 1) { runOnUiThread { callback.invoke(it) } }
                         }
                     }

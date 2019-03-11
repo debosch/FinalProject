@@ -10,10 +10,10 @@ import com.deboshdaniily.chuckapp.data.JokeModel
 import io.vavr.control.Try
 import kotlinx.android.synthetic.main.joke_item.view.*
 
-class JokeAdapder(
+class JokeAdapter(
     private val count: Int,
     private val supplier: (position: Int, callback: (Try<JokeModel>) -> Unit) -> Unit
-) : RecyclerView.Adapter<JokeAdapder.JokeViewHolder>() {
+) : RecyclerView.Adapter<JokeAdapter.JokeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JokeViewHolder {
         return JokeViewHolder(
