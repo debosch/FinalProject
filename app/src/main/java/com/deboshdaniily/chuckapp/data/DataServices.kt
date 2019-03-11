@@ -28,8 +28,6 @@ interface DataService {
     fun cacheJoke(model: JokeModel, callback: (Try<Void>) -> Unit = {})
 }
 
-
-
 class DataServiceImpl(context: Context) : DataService {
     private val jokeApiRetrofit = Retrofit.Builder()
         .baseUrl("https://api.chucknorris.io/")
@@ -133,7 +131,7 @@ class DataServiceImpl(context: Context) : DataService {
     override fun isThisJokeCached(model: JokeModel, callback: (Try<Boolean>) -> Unit) {
         thread {
             callback.invoke(Try.of { localJokesDAO.getJokeByText(model.joke).isNotEmpty() })
-        }.start()
+        }
     }
 
     override fun cacheJoke(model: JokeModel, callback: (Try<Void>) -> Unit) {
