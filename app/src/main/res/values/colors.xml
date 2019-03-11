@@ -7,5 +7,5 @@
     <color name="btnCancel">#BE5C14</color>
     <color name="btnOk">#D86C1D</color>
     <color name="btnAddNew">#CD8B11</color>
-    <color name="background">#EBE6E0</color>
+    <color name="divider">#C0BEBC</color>
 </resources>
