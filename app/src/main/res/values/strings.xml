@@ -15,4 +15,5 @@
     <string name="saved_menu_item">Saved</string>
     <string name="name_of_new_category">Write category here</string>
     <string name="title_new_joke">Write new joke</string>
+    <string name="share_text">\n\n ChuckApp, KODE Final project. Made by dnl000 and deb0sch</string>
 </resources>
