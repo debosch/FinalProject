@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.deboshdaniily.chuckapp">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,9 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".categories.NewCategory"></activity>
         <activity
-            android:name=".NewJoke"
+            android:name=".categories.CategoryName"
+            android:theme="@style/CategoryNameTheme" />
+        <activity android:name=".categories.NewCategory" />
+        <activity
+            android:name=".jokes.NewJoke"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".categories.Category"
