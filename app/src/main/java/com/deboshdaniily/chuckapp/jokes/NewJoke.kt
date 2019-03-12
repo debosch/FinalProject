@@ -20,6 +20,10 @@ class NewJoke : AppCompatActivity() {
         setContentView(R.layout.activity_new_joke)
         title = resources.getString(R.string.title_new_joke)
 
+        setSupportActionBar(new_joke_toolbar)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         btn_ok.setOnClickListener {
             val model = JokeModel(
                 null,
@@ -39,8 +43,5 @@ class NewJoke : AppCompatActivity() {
             val intent = Intent(this, NewCategory::class.java)
             startActivity(intent)
         }
-
-
-
     }
 }
