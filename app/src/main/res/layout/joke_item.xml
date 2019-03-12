@@ -23,13 +23,13 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/joke_text"
+            android:text="@string/loading"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/view2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/view2"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <View
@@ -42,7 +42,7 @@
             app:layout_constraintBottom_toTopOf="@id/joke_category"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/joke_text"/>
+            app:layout_constraintTop_toBottomOf="@id/joke_text" />
 
         <TextView
             android:id="@+id/joke_category"
@@ -52,7 +52,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/joke_category"
+            android:text="@string/loading"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@id/view3"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/joke_category"/>
+            app:layout_constraintTop_toBottomOf="@id/joke_category" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
