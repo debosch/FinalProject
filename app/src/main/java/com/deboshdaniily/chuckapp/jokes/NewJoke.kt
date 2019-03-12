@@ -1,10 +1,8 @@
 package com.deboshdaniily.chuckapp.jokes
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.deboshdaniily.chuckapp.R
-import com.deboshdaniily.chuckapp.categories.NewCategory
 import com.deboshdaniily.chuckapp.data.CATEGORY_SELF_WRITTEN
 import com.deboshdaniily.chuckapp.data.DataService
 import com.deboshdaniily.chuckapp.data.DataServiceImpl
@@ -38,10 +36,5 @@ class NewJoke : AppCompatActivity() {
         btn_cancel.setOnClickListener { finish() }
 
         service = DataServiceImpl(this.applicationContext)
-
-        edit_category.setOnClickListener {
-            val intent = Intent(this, NewCategory::class.java)
-            startActivity(intent)
-        }
     }
 }

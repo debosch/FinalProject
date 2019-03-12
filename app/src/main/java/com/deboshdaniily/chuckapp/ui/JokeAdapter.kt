@@ -42,7 +42,12 @@ class JokeAdapter(
                         if (it.isSuccess) {
                             val model = it.get()
                             joke_text.text = model.joke
-                            joke_category.text = "Category: " + (model.categories?.joinToString(", ") ?: "none")
+                            joke_category.text = String.format(
+                                resources.getString(
+                                    R.string.adapter_categories,
+                                    (model.categories?.joinToString(", "))
+                                ) ?: resources.getString(R.string.adapter_categories_none)
+                            )
                             downloadedJokes.add(model)
                             joke_share_button.setOnClickListener {
                                 val shareIntent = Intent()
@@ -55,7 +60,7 @@ class JokeAdapter(
                                 context.startActivity(shareIntent)
                             }
                         } else {
-                            joke_text.text = "Error downloading joke: ${it.cause}"
+                            joke_text.text = resources.getString(R.string.err_connection_msg)
                             joke_category.text = "???"
                         }
                     }
@@ -64,7 +69,10 @@ class JokeAdapter(
                 val model = downloadedJokes[position]
                 holder.itemView.apply {
                     joke_text.text = model.joke
-                    joke_category.text = "Category: " + (model.categories?.joinToString(", ") ?: "none")
+                    joke_category.text = String.format(
+                        resources.getString(R.string.adapter_categories),
+                        model.categories?.joinToString(", ") ?: resources.getString(R.string.adapter_categories_none)
+                    )
                     downloadedJokes.add(model)
                     joke_share_button.setOnClickListener {
                         val shareIntent = Intent()

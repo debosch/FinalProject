@@ -1,15 +1,10 @@
 <resources>
     <string name="app_name">ChuckApp</string>
     <string name="search_bar_text">Search</string>
-    <string name="categories">Categories</string>
     <string name="joke_id">ID</string>
     <string name="joke_text">Joke</string>
-    <string name="joke_category">Category</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_ok">OK</string>
-    <string name="btn_add_new">ADD NEW</string>
-    <string name="explicit_category">Explicit</string>
-    <string name="nerdy_category">Nerdy</string>
     <string name="author">Author:</string>
     <string name="edit_joke_text">Write your joke</string>
     <string name="cached_menu_item">Cached</string>
@@ -19,6 +14,9 @@
     <string name="loading">Loading…</string>
     <string name="written_menu_item">Written</string>
     <string name="from_internet_menu_item">From internet</string>
+    <string name="err_connection_msg">Error downloading joke, check your internet connection</string>
+    <string name="adapter_categories">Category: %s</string>
+    <string name="adapter_categories_none">none </string>
     <string name="subtitle_from_internet">" Jokes from internet"</string>
     <string name="subtitle_cached">" Cached jokes"</string>
     <string name="subtitle_written">" Written jokes"</string>

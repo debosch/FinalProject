@@ -57,6 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/add_category"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edit_joke"
         android:layout_width="match_parent"
@@ -71,49 +72,25 @@
         android:singleLine="false"
         app:layout_constraintBottom_toTopOf="@id/bottom_divider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_category" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
 
     <View
         android:id="@+id/bottom_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="664dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/divider"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:text="@string/author"
-        android:textSize="22sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/edit_author"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_author"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="30dp"
-        android:backgroundTint="@color/btnOk"
-        android:singleLine="true"
-        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.917" />
+        app:layout_constraintVertical_bias="0.110000014" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_ok"
@@ -129,8 +106,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_cancel"
         app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_cancel"
@@ -147,7 +123,6 @@
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_ok"
-        app:layout_constraintTop_toBottomOf="@+id/edit_author" />
+        app:layout_constraintStart_toEndOf="@+id/btn_ok" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
