@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".jokes.NewJoke">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/new_joke_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/title_new_joke">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:id="@+id/add_category"
         android:layout_width="300dp"
@@ -20,22 +29,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/edit_category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_joke_toolbar"
         app:layout_constraintVertical_bias="0.031" />
 
     <ImageButton
         android:id="@+id/edit_category"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_edit_black_20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/add_category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/add_category"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/add_category"
         app:layout_constraintVertical_bias="0.054" />
 
     <View
@@ -52,22 +60,23 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edit_joke"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/btnOk"
+        android:gravity="top|start"
         android:hint="@string/edit_joke_text"
         android:singleLine="false"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.149" />
+        app:layout_constraintTop_toBottomOf="@id/add_category" />
 
     <View
+        android:id="@+id/bottom_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="8dp"
