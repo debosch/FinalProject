@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.deboshdaniily.chuckapp.categories.Category
 import com.deboshdaniily.chuckapp.data.DataService
 import com.deboshdaniily.chuckapp.data.DataServiceImpl
 import com.deboshdaniily.chuckapp.jokes.NewJoke
@@ -43,9 +42,10 @@ class MainActivity : AppCompatActivity() {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.toolbar_menu, menu)
 
-        menu?.findItem(R.id.categories_menu_item)?.setOnMenuItemClickListener {
-            val intent = Intent(this, Category::class.java)
-            startActivity(intent)
+        menu?.findItem(R.id.from_internet_menu_item)?.setOnMenuItemClickListener {
+            joke_list.adapter = JokeAdapter(JOKES_LIMIT) { _, callback ->
+                service.getRandomJoke(callback::invoke)
+            }
             true
         }
 
@@ -64,6 +64,21 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        menu?.findItem(R.id.written_menu_item)?.setOnMenuItemClickListener {
+            service.getWrittenJokes { tryJokes ->
+                if (tryJokes.isSuccess) {
+                    val jokes = tryJokes.get()
+                    val adapter = JokeAdapter(jokes.size) { _, _ -> }
+                    adapter.setJokesList(jokes)
+                    runOnUiThread { joke_list.adapter = adapter }
+                } else {
+                    // TODO debosh: could not get database, show splash screen mb?
+                }
+            }
+            true
+        }
+
         return super.onCreateOptionsMenu(menu)
     }
 }

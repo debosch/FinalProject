@@ -81,5 +81,10 @@ class JokeAdapter(
         }
     }
 
+    fun setJokesList(jokes: Collection<JokeModel>) {
+        downloadedJokes.clear()
+        downloadedJokes.addAll(jokes)
+    }
+
     class JokeViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }
