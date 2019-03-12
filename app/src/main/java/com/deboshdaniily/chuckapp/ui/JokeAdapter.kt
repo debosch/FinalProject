@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.joke_item.view.*
 
 class JokeAdapter(
     private val count: Int,
-    private val supplier: (position: Int, callback: (Try<JokeModel>) -> Unit) -> Unit
+    private val supplier: (position: Int, callback: (Try<JokeModel>) -> Unit) -> Unit = { _, _ -> }
 ) : RecyclerView.Adapter<JokeAdapter.JokeViewHolder>() {
 
     @Volatile
@@ -46,7 +46,8 @@ class JokeAdapter(
                                 resources.getString(
                                     R.string.adapter_categories,
                                     (model.categories?.joinToString(", "))
-                                ) ?: resources.getString(R.string.adapter_categories_none)
+                                        ?: resources.getString(R.string.adapter_categories_none)
+                                )
                             )
                             downloadedJokes.add(model)
                             joke_share_button.setOnClickListener {

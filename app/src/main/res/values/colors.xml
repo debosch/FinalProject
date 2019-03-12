@@ -3,6 +3,7 @@
     <color name="colorPrimary">#E2721F</color>
     <color name="colorPrimaryDark">#905915</color>
     <color name="colorAccent">#EBEBEB</color>
+    <color name="colorAccentHalf">#80EBEBEB</color>
     <color name="fabColor">#D86D1B</color>
     <color name="btnCancel">#BE5C14</color>
     <color name="btnOk">#D86C1D</color>

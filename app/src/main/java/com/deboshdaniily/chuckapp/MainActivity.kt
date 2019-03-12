@@ -4,19 +4,26 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.deboshdaniily.chuckapp.data.DataService
 import com.deboshdaniily.chuckapp.data.DataServiceImpl
 import com.deboshdaniily.chuckapp.jokes.NewJoke
 import com.deboshdaniily.chuckapp.ui.JokeAdapter
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val JOKES_LIMIT = 50
+private const val QUERY_MIN_LENGTH = 3
 
 private const val SCREEN_FROM_INTERNET = 0
 private const val SCREEN_CACHED = 1
 private const val SCREEN_WRITTEN = 2
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,20 +40,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun postInit() {
         service = DataServiceImpl(this.applicationContext)
+        setSupportActionBar(main_toolbar)
 
-        main_toolbar.apply {
-            inflateMenu(R.menu.toolbar_menu)
-            menu.findItem(R.id.from_internet_menu_item).setOnMenuItemClickListener {
-                screen = SCREEN_FROM_INTERNET
-                true
-            }
-            menu.findItem(R.id.saved_menu_item).setOnMenuItemClickListener {
-                screen = SCREEN_CACHED
-                true
-            }
-            menu.findItem(R.id.written_menu_item).setOnMenuItemClickListener {
-                screen = SCREEN_WRITTEN
-                true
+        search_bar.setImeActionLabel(getString(R.string.search), KeyEvent.KEYCODE_ENTER);
+        search_bar.setOnEditorActionListener { v, actionId, event ->
+            when (actionId) {
+                0 -> {
+                    if (event.action == KeyEvent.ACTION_DOWN) {
+                        if (isNetworkAvailable()) {
+                            switchToSearch(search_bar.text.toString())
+                        } else {
+                            Snackbar.make(v, getString(R.string.no_internet_connection), Snackbar.LENGTH_LONG).show()
+                        }
+                    }
+                    true
+                }
+                else -> false
             }
         }
 
@@ -73,6 +82,43 @@ class MainActivity : AppCompatActivity() {
         postInit()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?) =
+        when (item?.itemId) {
+
+            R.id.search -> {
+                if (search_bar.visibility == View.GONE) {
+                    search_bar.visibility = View.VISIBLE
+                    search_bar.requestFocus()
+                } else {
+                    search_bar.visibility = View.GONE
+                    search_bar.clearFocus()
+                }
+                true
+            }
+
+            R.id.from_internet_menu_item -> {
+                screen = SCREEN_FROM_INTERNET
+                true
+            }
+
+            R.id.saved_menu_item -> {
+                screen = SCREEN_CACHED
+                true
+            }
+
+            R.id.written_menu_item -> {
+                screen = SCREEN_WRITTEN
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+
     private fun switchToInternet() {
         main_toolbar.subtitle = getString(R.string.subtitle_from_internet)
         if (isNetworkAvailable()) {
@@ -89,7 +135,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun switchToCached() {
         main_toolbar.subtitle = getString(R.string.subtitle_cached)
-            service.getCachedJokesCount {
+        service.getCachedJokesCount {
             if (it.isSuccess) {
                 val count = it.get()
                 runOnUiThread {
@@ -108,7 +154,7 @@ class MainActivity : AppCompatActivity() {
         service.getWrittenJokes { tryJokes ->
             if (tryJokes.isSuccess) {
                 val jokes = tryJokes.get()
-                val adapter = JokeAdapter(jokes.size) { _, _ -> }
+                val adapter = JokeAdapter(jokes.size)
                 adapter.setJokesList(jokes)
                 runOnUiThread { joke_list.adapter = adapter }
             } else {
@@ -117,7 +163,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun switchToSearch(query: String) {
+        if (query.length >= QUERY_MIN_LENGTH) {
+            service.getJokesWithQuery(query) { tryQueryResult ->
+                if (tryQueryResult.isSuccess) {
+                    main_toolbar.subtitle = getString(R.string.subtitle_search)
+                    val queryResult = tryQueryResult.get()
+                    val adapter = JokeAdapter(queryResult.total)
+                    adapter.setJokesList(queryResult.result)
+                    joke_list.adapter = adapter
+                } else {
+                    Snackbar.make(joke_list, getString(R.string.no_internet_connection), Snackbar.LENGTH_LONG).show()
+                }
+            }
+        } else {
+            Snackbar.make(joke_list, getString(R.string.too_little_chars_in_search_query), Snackbar.LENGTH_LONG).show()
+        }
+    }
+
     private fun isNetworkAvailable() =
         (getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo?.isConnected == true
-
 }
