@@ -20,4 +20,9 @@
     <string name="subtitle_from_internet">" Jokes from internet"</string>
     <string name="subtitle_cached">" Cached jokes"</string>
     <string name="subtitle_written">" Written jokes"</string>
+    <string name="subtitle_search">" Search results"</string>
+    <string name="search_bar_hint">Search…</string>
+    <string name="search">Search</string>
+    <string name="no_internet_connection">Network is unavailable. Check internet connection.</string>
+    <string name="too_little_chars_in_search_query">Query must be 3 or more characters long</string>
 </resources>
