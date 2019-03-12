@@ -15,7 +15,7 @@
 
     <item
         android:id="@+id/saved_menu_item"
-        android:title="@string/saved_menu_item" />
+        android:title="@string/cached_menu_item" />
 
     <item
         android:id="@+id/written_menu_item"
