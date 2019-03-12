@@ -26,6 +26,8 @@ interface DataService {
     fun isThisJokeCached(model: JokeModel, callback: (Try<Boolean>) -> Unit = {})
 
     fun cacheJoke(model: JokeModel, callback: (Try<Void>) -> Unit = {})
+
+    fun getWrittenJokes(callback: (Try<List<JokeModel>>) -> Unit)
 }
 
 class DataServiceImpl(context: Context) : DataService {
@@ -137,6 +139,12 @@ class DataServiceImpl(context: Context) : DataService {
     override fun cacheJoke(model: JokeModel, callback: (Try<Void>) -> Unit) {
         thread {
             callback.invoke(Try.run { localJokesDAO.insertJokeEntity(JokeEntity.fromJokeModel(model)) })
+        }
+    }
+
+    override fun getWrittenJokes(callback: (Try<List<JokeModel>>) -> Unit) {
+        thread {
+            callback.invoke(Try.of { localJokesDAO.getWrittenJokes().map { it.toModel() } })
         }
     }
 }

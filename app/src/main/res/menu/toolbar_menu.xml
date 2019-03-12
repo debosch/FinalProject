@@ -9,12 +9,20 @@
         android:title="@string/search_bar_text"
         app:showAsAction="always" />
 
+    <!--<item-->
+        <!--android:id="@+id/categories_menu_item"-->
+        <!--android:title="@string/categories" />-->
+
     <item
-        android:id="@+id/categories_menu_item"
-        android:title="@string/categories" />
+        android:id="@+id/from_internet_menu_item"
+        android:title="@string/from_internet_menu_item" />
 
     <item
         android:id="@+id/saved_menu_item"
         android:title="@string/saved_menu_item" />
+
+    <item
+        android:id="@+id/written_menu_item"
+        android:title="@string/written_menu_item" />
 
 </menu>

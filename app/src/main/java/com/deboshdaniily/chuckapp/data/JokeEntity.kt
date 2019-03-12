@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+const val CATEGORY_SELF_WRITTEN = "Self-written"
+
 @Entity
 data class JokeEntity(
 
@@ -19,7 +21,7 @@ data class JokeEntity(
 
     @ColumnInfo(name = "categories") val categories: String? = null
 ) {
-    fun toModel() : JokeModel = JokeModel(
+    fun toModel(): JokeModel = JokeModel(
         remoteId,
         joke,
         iconUrl,

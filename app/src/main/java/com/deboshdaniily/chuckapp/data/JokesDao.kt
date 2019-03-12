@@ -22,9 +22,9 @@ interface JokesDao {
     @Insert
     fun fillWithTestData(vararg jokeEntities: JokeEntity)
 
-    @Query("""
-        DELETE FROM JokeEntity
-    """)
+    @Query("DELETE FROM JokeEntity")
     fun flushDatabase()
 
+    @Query("SELECT * FROM JokeEntity WHERE categories LIKE '%$CATEGORY_SELF_WRITTEN%'")
+    fun getWrittenJokes(): List<JokeEntity>
 }
