@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         service = DataServiceImpl(this.applicationContext)
         setSupportActionBar(main_toolbar)
 
-        search_bar.setImeActionLabel(getString(R.string.search), KeyEvent.KEYCODE_ENTER);
+        search_bar.setImeActionLabel(getString(R.string.search), KeyEvent.KEYCODE_ENTER)
         search_bar.setOnEditorActionListener { v, actionId, event ->
             when (actionId) {
                 0 -> {
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 service.getRandomJoke(callback::invoke)
             }
         } else {
-            // TODO debosh: no internet connection available
+            Snackbar.make(joke_list, getString(R.string.no_internet_connection), Snackbar.LENGTH_LONG).show()
             joke_list.adapter = JokeAdapter(1) { _, callback ->
                 service.getRandomJoke(callback::invoke)
             }
@@ -144,7 +144,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                // TODO debosh: could not get database, show splash screen mb?
+                Snackbar.make(joke_list, "Could not get database, try later, please", Snackbar.LENGTH_LONG).show()
             }
         }
     }
@@ -158,7 +158,7 @@ class MainActivity : AppCompatActivity() {
                 adapter.setJokesList(jokes)
                 runOnUiThread { joke_list.adapter = adapter }
             } else {
-                // TODO debosh: could not get database, show splash screen mb?
+                Snackbar.make(joke_list, "Failed switch to written", Snackbar.LENGTH_LONG).show()
             }
         }
     }

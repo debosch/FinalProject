@@ -17,8 +17,13 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".jokes.NewJoke"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
