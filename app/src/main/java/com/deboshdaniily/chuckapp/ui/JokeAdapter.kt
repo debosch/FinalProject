@@ -45,9 +45,8 @@ class JokeAdapter(
                             joke_category.text = String.format(
                                 resources.getString(
                                     R.string.adapter_categories,
-                                    (model.categories?.joinToString(", "))
-                                        ?: resources.getString(R.string.adapter_categories_none)
-                                )
+                                    model.categories?.joinToString(", ")
+                                ) ?: resources.getString(R.string.adapter_categories_none)
                             )
                             downloadedJokes.add(model)
                             joke_share_button.setOnClickListener {
